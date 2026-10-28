@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff7196">
+<title>For Khin 🤪❤️</title>
+<style>
+:root{--pink:#ff7196;--deep:#d93c70;--ink:#692b45}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;overflow-x:hidden;display:flex;align-items:center;justify-content:center;padding:22px 14px;font-family:system-ui,-apple-system,"Noto Sans Myanmar",sans-serif;color:var(--ink);background:radial-gradient(circle at 12% 15%,#ffe1eb,transparent 35%),radial-gradient(circle at 90% 85%,#ffd3e1,transparent 35%),linear-gradient(145deg,#fff9fb,#ffe9f0)}
+#floaties{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.float{position:absolute;bottom:-45px;opacity:.6;animation:up linear infinite}
+@keyframes up{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+.card{position:relative;z-index:1;width:min(100%,440px);padding:28px 22px 24px;text-align:center;border:1px solid #fff;border-radius:30px;background:#ffffffd9;backdrop-filter:blur(12px);box-shadow:0 20px 60px #c64c7424}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:#bd5478;text-transform:uppercase}
+.big{font-size:58px;margin:16px 0 3px;filter:drop-shadow(0 8px 10px #ff8db44a)}
+h1{font-size:clamp(29px,8vw,38px);line-height:1.25;margin:8px 0 12px}
+p{font-size:15px;line-height:1.9;color:#87556a}
+button{border:0;border-radius:999px;padding:14px 22px;min-height:48px;background:linear-gradient(135deg,#ff7c9e,#e84f80);color:white;font-size:15px;font-weight:750;cursor:pointer;box-shadow:0 9px 22px #e84f8038}
+.secondary{background:#fff;color:#d94f7c;border:1px solid #ffd1df;box-shadow:none}
+.hidden{display:none!important}
+.letter{margin:20px 0 18px;padding:23px 16px;text-align:center;white-space:pre-line;line-height:2.1;font-size:17px;background:#fff7fa;border:1px dashed #f3a3ba;border-radius:20px;animation:appear .5s ease both}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.signature{margin-top:15px;color:#d94f7c;font-weight:800}
+.tiny{font-size:12px;color:#ad7a8d;margin-top:22px}
+</style>
+</head>
+<body>
+<div id="floaties" aria-hidden="true"></div>
+<main class="card">
+  <div class="eyebrow">A little surprise just for you</div>
+  <div class="big" id="mainIcon">💌</div>
+  <h1>မင်္ဂလာပါ Khin <span style="color:#ef6790">♡</span></h1>
+  <p id="intro">မင်းအတွက် Surprise လေးတစ်ခုရှိတယ်နော် 🤭<br>ဖွင့်ကြည့်မလား? 💗</p>
+  <button id="openBtn" onclick="openLetter()">Open your surprise 💖</button>
+  <section id="letterSection" class="hidden">
+    <div class="letter">အပြင်မှာ အေး 🥶
+ရင်မှာ နွေး ❤️
+
+မင်္ဂလာပါ ချေချေ မိုးမိုး နဲ့
+မြတ်နိုးရာလေး 🤪❤️
+
+<div class="signature">Khin အတွက် အထူးလေး 💌</div></div>
+    <button onclick="showFinal()">နောက်ဆုံး Surprise လေး… 💗</button>
+    <div id="final" class="hidden">
+      <div class="big">🌷💖</div>
+      <h1>Khin ရေ… ❤️</h1>
+      <p>ဒီစာလေးဖတ်ပြီး ပြုံးမိသွားရင်<br>ကိုယ့် Surprise လေး အောင်မြင်ပြီနော် 🤪💕<br>မင်းရဲ့နေ့လေး ပျော်ရွှင်ပါစေ!</p>
+      <button class="secondary" onclick="sharePage()">Share this surprise ↗</button>
+    </div>
+  </section>
+  <p class="tiny">Made with a little courage & lots of 💗</p>
+</main>
+<script>
+const box=document.getElementById('floaties');
+for(let i=0;i<20;i++){const e=document.createElement('span');e.className='float';e.textContent=['♡','♥','💗','✦','🌸'][i%5];e.style.left=Math.random()*100+'%';e.style.fontSize=(14+Math.random()*20)+'px';e.style.animationDuration=(8+Math.random()*9)+'s';e.style.animationDelay=(-Math.random()*12)+'s';box.appendChild(e)}
+function burst(){for(let i=0;i<18;i++){const e=document.createElement('span');e.className='float';e.textContent=['💗','💕','♡','🌸'][i%4];e.style.left=(20+Math.random()*60)+'%';e.style.bottom='15%';e.style.fontSize=(16+Math.random()*18)+'px';e.style.animationDuration=(2+Math.random()*2)+'s';box.appendChild(e);setTimeout(()=>e.remove(),4500)}}
+function openLetter(){document.getElementById('letterSection').classList.remove('hidden');document.getElementById('openBtn').classList.add('hidden');document.getElementById('intro').classList.add('hidden');document.getElementById('mainIcon').textContent='💝';burst()}
+function showFinal(){document.getElementById('final').classList.remove('hidden');burst()}
+async function sharePage(){if(navigator.share){try{await navigator.share({title:'For Khin 🤪❤️',text:'မင်းအတွက် Love Surprise လေး 💌',url:location.href})}catch(e){}}else{alert('ဒီ HTML ဖိုင်ကို public hosting ပေါ်တင်ပြီး Link ထုတ်ပြီးမှ မျှဝေလို့ရပါမယ်။')}}
+</script>
+</body>
+</html>
